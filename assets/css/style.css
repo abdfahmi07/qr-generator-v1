@@ -92,6 +92,18 @@ button:hover {
   color: #fff;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  font-size: 0.875rem;
+  padding: 10px;
+  background-color: #fff;
+}
+
 @media (min-width: 1280px) {
   .container {
     justify-content: space-evenly;
