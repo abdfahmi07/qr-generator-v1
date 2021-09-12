@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator | Scan</title>
+    <script type="text/javascript" src="assets/js/instascan.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Glory:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>QR Code Scanner</h1>
+      </header>
+      <div class="container">
+        <video id="preview"></video>
+        <div class="action-wrapper">
+          <input type="text" class="qr-data" readonly />
+          <button class="generate-btn"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let scanner = new Instascan.Scanner({
+        video: document.getElementById("preview"),
+      });
+      let linkUrl = document.querySelector(".generate-btn");
+      scanner.addListener("scan", function (content) {
+        linkUrl.value = content;
+      });
+      Instascan.Camera.getCameras()
+        .then(function (cameras) {
+          if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+          } else {
+            console.error("No cameras found.");
+          }
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+    </script>
+  </body>
+</html>

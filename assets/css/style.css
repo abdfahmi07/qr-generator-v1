@@ -1,0 +1,111 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Glory, sans-serif;
+}
+
+.wrapper {
+  background-color: #b2d1e2;
+  height: 100vh;
+}
+
+header {
+  padding: 70px 40px 30px 40px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrcode-wrapper {
+  width: 60%;
+  padding: 30px 0px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px 3px rgb(173 173 173 / 50%);
+}
+
+#qrcode {
+  display: flex;
+  justify-content: center;
+}
+
+#qrcode img {
+  width: 70%;
+}
+
+.action-wrapper {
+  margin-bottom: 15px;
+}
+
+.action-wrapper input {
+  width: 167px;
+  margin-right: 5px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: none;
+  padding: 0px 10px;
+}
+
+.action-wrapper button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+.download-wrapper button {
+  width: 215px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+}
+
+.download-wrapper button .jpeg {
+  font-size: 0.875rem;
+  margin-right: 5px;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #87b7d1;
+  color: #fff;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 45vw;
+    margin: 70px auto 0px auto;
+  }
+
+  header {
+    padding-top: 80px;
+  }
+
+  .qrcode-wrapper {
+    width: 250px;
+    margin-bottom: 0px;
+  }
+}

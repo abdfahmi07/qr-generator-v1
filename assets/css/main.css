@@ -1,0 +1,35 @@
+header h1 {
+  margin-bottom: 40px;
+  color: #333;
+}
+
+header img {
+  width: 65%;
+}
+
+.container {
+  justify-content: center;
+  margin: 20px auto 0px auto;
+}
+
+.container .action-menu {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  font-size: 0.9375rem;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.container .action-menu:hover {
+  background-color: #87b7d1;
+  color: #fff;
+}
+
+.container a:first-child {
+  margin-bottom: 15px;
+}
