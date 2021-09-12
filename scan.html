@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Code Generator | Scan</title>
-    <script type="text/javascript" src="assets/js/instascan.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,27 +18,47 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>QR Code Scanner</h1>
+        <h1>Scan QR Code</h1>
       </header>
-      <div class="container">
-        <video id="preview"></video>
+      <div class="container video-wrapper">
+        <video id="preview" autoplay="true"></video>
         <div class="action-wrapper">
-          <input type="text" class="qr-data" readonly />
+          <input
+            type="text"
+            class="qr-data"
+            placeholder="Link preview...."
+            readonly
+          />
           <button class="generate-btn"><i class="fa fa-search"></i></button>
         </div>
       </div>
     </div>
     <script>
+      let linkUrl = document.querySelector(".qr-data");
+      let redirectUrl = document.querySelector(".generate-btn");
+      let video = document.querySelector("#preview");
+
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.log("Something went wrong!");
+          });
+      }
+
       let scanner = new Instascan.Scanner({
         video: document.getElementById("preview"),
       });
-      let linkUrl = document.querySelector(".generate-btn");
+
       scanner.addListener("scan", function (content) {
         linkUrl.value = content;
       });
@@ -53,6 +73,10 @@
         .catch(function (e) {
           console.error(e);
         });
+
+      redirectUrl.addEventListener("click", function () {
+        window.location.href = linkUrl.value;
+      });
     </script>
   </body>
 </html>
